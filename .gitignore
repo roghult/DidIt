@@ -1,0 +1,28 @@
+# macOS
+.DS_Store
+
+
+# Backend
+backend/.gradle
+backend/.idea
+backend/out
+backend/build
+*.iml
+*.ipr
+*.iws
+
+
+# Frontend
+frontend/node_modules/**/*
+frontend/.expo/*
+frontend/npm-debug.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+frontend/web-build/
+
+
+
