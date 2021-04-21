@@ -1,12 +1,28 @@
 import React from 'react';
-
-import { Text } from './Themed';
+import styled from 'styled-components/native';
 
 export interface HabitProps {
   id: number;
   name: string;
 }
 
+const HabitView = styled.View`
+  width: 50%;
+  height: 80px;
+  border: white;
+  padding: 10px;
+  justify-content: center;
+`;
+
+const HabitText = styled.Text`
+  text-align: center;
+  color: white;
+`;
+
 export default function Habit({ habit }: { habit: HabitProps }) {
-  return <Text>{habit.name}</Text>;
+  return (
+    <HabitView>
+      <HabitText>{habit.name}</HabitText>
+    </HabitView>
+  );
 }

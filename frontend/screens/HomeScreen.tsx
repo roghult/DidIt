@@ -7,7 +7,7 @@ import { View } from '../components/Themed';
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
-      <HabitList></HabitList>
+      <HabitList />
     </View>
   );
 }
