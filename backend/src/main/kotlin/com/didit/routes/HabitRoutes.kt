@@ -7,13 +7,20 @@ import io.ktor.http.*
 import io.ktor.request.*
 import io.ktor.response.*
 import io.ktor.routing.*
+import kotlinx.serialization.Serializable
 
 private val habitRepository = HabitRepositoryInMemory()
 
+@Serializable
+data class HabitResponse(
+    val habits: List<Habit>,
+)
+
 fun Route.habitRouting() {
-    route("/habit") {
+    route("/habits") {
         get {
-            call.respond(habitRepository.allHabits())
+            call.application.environment.log.info("GET /habits")
+            call.respond(HabitResponse(habitRepository.allHabits()))
         }
         get("{id}") {
             val id = call.parameters["id"] ?: return@get call.respondText(
