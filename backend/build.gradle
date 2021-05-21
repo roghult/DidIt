@@ -35,3 +35,7 @@ compileTestKotlin {
 application {
     mainClassName = 'com.didit.ApplicationKt'
 }
+
+tasks.create("stage") {
+    dependsOn("installDist")
+}
