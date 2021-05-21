@@ -14,15 +14,14 @@ const HabitView = styled.View`
   justify-content: center;
 `;
 
-const HabitText = styled.Text`
-  text-align: center;
-  color: white;
-`;
+const HabitButton = styled.Button``;
+
+const habitPressed = () => {};
 
 export default function Habit({ habit }: { habit: HabitProps }) {
   return (
     <HabitView>
-      <HabitText>{habit.name}</HabitText>
+      <HabitButton title={habit.name} onPress={habitPressed} />
     </HabitView>
   );
 }
