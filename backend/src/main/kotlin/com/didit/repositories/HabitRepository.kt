@@ -9,8 +9,8 @@ interface HabitRepository {
     fun delete(id: String): Boolean
 }
 
-class HabitRepositoryInMemory: HabitRepository {
-    private val habits = mutableListOf<Habit>()
+class HabitRepositoryInMemory(vararg habits: Habit): HabitRepository {
+    private val habits = habits.asList().toMutableList()
 
     override fun add(habit: Habit) {
         habits.add(habit)

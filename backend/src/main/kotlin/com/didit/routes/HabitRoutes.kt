@@ -1,7 +1,7 @@
 package com.didit.routes
 
 import com.didit.models.Habit
-import com.didit.repositories.HabitRepositoryInMemory
+import com.didit.repositories.HabitRepository
 import io.ktor.application.*
 import io.ktor.http.*
 import io.ktor.request.*
@@ -9,14 +9,12 @@ import io.ktor.response.*
 import io.ktor.routing.*
 import kotlinx.serialization.Serializable
 
-private val habitRepository = HabitRepositoryInMemory()
-
 @Serializable
 data class HabitResponse(
     val habits: List<Habit>,
 )
 
-fun Route.habitRouting() {
+fun Route.habitRouting(habitRepository: HabitRepository) {
     route("/habits") {
         get {
             call.application.environment.log.info("GET /habits")
@@ -49,8 +47,8 @@ fun Route.habitRouting() {
     }
 }
 
-fun Application.registerHabitRoutes() {
+fun Application.registerHabitRoutes(habitRepository: HabitRepository) {
     routing {
-        habitRouting()
+        habitRouting(habitRepository)
     }
 }
