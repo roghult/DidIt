@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import { useQuery } from 'react-query';
 import styled from 'styled-components/native';
+import AddHabit from './AddHabit';
 
 import Habit from './Habit';
 import { Text, View } from './Themed';
@@ -45,6 +46,7 @@ export default function HabitList() {
       {habits.map((habit) => {
         return <Habit key={habit.id} habit={habit} />;
       })}
+      <AddHabit />
     </HabitsView>
   );
 }

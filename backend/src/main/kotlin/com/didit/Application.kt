@@ -36,8 +36,11 @@ fun Application.module(testing: Boolean = false) {
         json()
     }
     install(CORS) {
+        allowCredentials = true
+        allowNonSimpleContentTypes = true
         method(HttpMethod.Options)
-        header(HttpHeaders.XForwardedProto)
+        method(HttpMethod.Post)
+        method(HttpMethod.Get)
         anyHost()
     }
     registerHabitRoutes(habitRepository)
