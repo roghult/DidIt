@@ -32,6 +32,7 @@ fun Route.habitRouting(habitRepository: HabitRepository) {
             call.respond(habit)
         }
         post {
+            call.application.environment.log.info("POST /habits")
             val habit = call.receive<Habit>()
             habitRepository.add(habit)
             call.respondText("Habit stored correctly", status = HttpStatusCode.Created)
